@@ -6,6 +6,52 @@ export interface IndexData {
 
 export const mockElasticsearchIndices: IndexData[] = [
   {
+    name: "user_logs_detailed",
+    fields: ["timestamp", "user_id", "action", "ip_address", "user_agent", "session_id", "page_url", "referrer", "device_type", "browser_version", "os", "country", "city", "response_time", "status_code", "method", "request_size", "response_size"],
+    sampleData: [
+      {
+        timestamp: "2024-01-15T10:30:45Z",
+        user_id: "user_12345",
+        action: "login",
+        ip_address: "192.168.1.100",
+        user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        session_id: "sess_abc123",
+        page_url: "/dashboard",
+        referrer: "https://google.com",
+        device_type: "desktop",
+        browser_version: "Chrome 120.0",
+        os: "Windows 10",
+        country: "BR",
+        city: "São Paulo",
+        response_time: 250,
+        status_code: 200,
+        method: "POST",
+        request_size: 1024,
+        response_size: 2048
+      },
+      {
+        timestamp: "2024-01-15T10:31:22Z",
+        user_id: "user_67890",
+        action: "page_view",
+        ip_address: "192.168.1.101",
+        user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        session_id: "sess_def456",
+        page_url: "/products",
+        referrer: "https://facebook.com",
+        device_type: "mobile",
+        browser_version: "Safari 17.0",
+        os: "macOS 13.0",
+        country: "US",
+        city: "New York",
+        response_time: 180,
+        status_code: 200,
+        method: "GET",
+        request_size: 512,
+        response_size: 4096
+      }
+    ]
+  },
+  {
     name: "user_logs",
     fields: ["timestamp", "user_id", "action", "ip_address", "user_agent"],
     sampleData: [
