@@ -216,32 +216,38 @@ const DataPreview = ({ selectedIndex }: DataPreviewProps) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="rounded-lg border overflow-hidden overflow-x-auto max-w-full">
-            <Table className="min-w-full">
-              <TableHeader>
-                <TableRow className="bg-muted/50">
-                  {indexData.fields.map((field) => (
-                    <TableHead key={field} className="font-medium whitespace-nowrap">
-                      {field}
-                    </TableHead>
-                  ))}
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {indexData.sampleData.map((row, index) => (
-                  <TableRow key={index} className="hover:bg-muted/30">
+          <div className="w-full max-w-full">
+            <div className="rounded-lg border overflow-x-auto max-h-96">
+              <Table className="table-fixed w-max min-w-full">
+                <TableHeader>
+                  <TableRow className="bg-muted/50">
                     {indexData.fields.map((field) => (
-                      <TableCell key={field} className="font-mono text-sm whitespace-nowrap">
-                        {typeof row[field] === 'object' 
-                          ? JSON.stringify(row[field]) 
-                          : String(row[field] || '-')
-                        }
-                      </TableCell>
+                      <TableHead key={field} className="font-medium whitespace-nowrap px-4 py-2 w-40 max-w-40 truncate">
+                        <div className="truncate" title={field}>
+                          {field}
+                        </div>
+                      </TableHead>
                     ))}
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {indexData.sampleData.map((row, index) => (
+                    <TableRow key={index} className="hover:bg-muted/30">
+                      {indexData.fields.map((field) => (
+                        <TableCell key={field} className="font-mono text-sm px-4 py-2 w-40 max-w-40">
+                          <div className="truncate" title={typeof row[field] === 'object' ? JSON.stringify(row[field]) : String(row[field] || '-')}>
+                            {typeof row[field] === 'object' 
+                              ? JSON.stringify(row[field]) 
+                              : String(row[field] || '-')
+                            }
+                          </div>
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
         </CardContent>
       </Card>
