@@ -216,12 +216,12 @@ const DataPreview = ({ selectedIndex }: DataPreviewProps) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="rounded-lg border overflow-hidden">
-            <Table>
+          <div className="rounded-lg border overflow-hidden overflow-x-auto max-w-full">
+            <Table className="min-w-full">
               <TableHeader>
                 <TableRow className="bg-muted/50">
                   {indexData.fields.map((field) => (
-                    <TableHead key={field} className="font-medium">
+                    <TableHead key={field} className="font-medium whitespace-nowrap">
                       {field}
                     </TableHead>
                   ))}
@@ -231,7 +231,7 @@ const DataPreview = ({ selectedIndex }: DataPreviewProps) => {
                 {indexData.sampleData.map((row, index) => (
                   <TableRow key={index} className="hover:bg-muted/30">
                     {indexData.fields.map((field) => (
-                      <TableCell key={field} className="font-mono text-sm">
+                      <TableCell key={field} className="font-mono text-sm whitespace-nowrap">
                         {typeof row[field] === 'object' 
                           ? JSON.stringify(row[field]) 
                           : String(row[field] || '-')
