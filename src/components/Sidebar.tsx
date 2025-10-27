@@ -63,6 +63,50 @@ const Sidebar = ({ selectedIndex, onIndexSelect }: SidebarProps) => {
             </div>
           </Card>
         )}
+
+        {/* Metadata Documents */}
+        {selectedIndex && (
+          <Card className="p-4 bg-secondary/30">
+            <div className="space-y-3">
+              <h3 className="font-medium text-foreground">Metadata Documents</h3>
+              <div className="space-y-2 text-xs">
+                {(() => {
+                  const indexData = mockElasticsearchIndices.find(idx => idx.name === selectedIndex);
+                  const firstDoc = indexData?.sampleData[0];
+                  
+                  return (
+                    <>
+                      <div className="flex flex-col space-y-1">
+                        <span className="text-muted-foreground">Nome Fonte:</span>
+                        <span className="font-mono text-foreground bg-background/50 px-2 py-1 rounded">
+                          {firstDoc?._nome_fonte || '-'}
+                        </span>
+                      </div>
+                      <div className="flex flex-col space-y-1">
+                        <span className="text-muted-foreground">Autor Dado:</span>
+                        <span className="font-mono text-foreground bg-background/50 px-2 py-1 rounded">
+                          {firstDoc?._autor_dado || '-'}
+                        </span>
+                      </div>
+                      <div className="flex flex-col space-y-1">
+                        <span className="text-muted-foreground">Data Carga:</span>
+                        <span className="font-mono text-foreground bg-background/50 px-2 py-1 rounded">
+                          {firstDoc?._data_carga || '-'}
+                        </span>
+                      </div>
+                      <div className="flex flex-col space-y-1">
+                        <span className="text-muted-foreground">Domínio:</span>
+                        <span className="font-mono text-foreground bg-background/50 px-2 py-1 rounded">
+                          {firstDoc?._dominio || '-'}
+                        </span>
+                      </div>
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+          </Card>
+        )}
       </div>
     </div>
   );
