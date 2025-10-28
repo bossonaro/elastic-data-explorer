@@ -66,9 +66,9 @@ const Sidebar = ({ selectedIndex, onIndexSelect }: SidebarProps) => {
 
         {/* Metadata Documents */}
         {selectedIndex && (
-          <Card className="p-4 bg-secondary/30">
-            <div className="space-y-3">
-              <h3 className="font-medium text-foreground">Metadata Documents</h3>
+          <Card className="p-4 bg-primary/5 border-primary/20">
+            <div className="space-y-2">
+              <h3 className="font-medium text-primary">Metadata Documents</h3>
               <div className="space-y-2 text-xs">
                 {(() => {
                   const indexData = mockElasticsearchIndices.find(idx => idx.name === selectedIndex);
